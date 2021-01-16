@@ -3,6 +3,11 @@ This is a desktop app that lets you keep track of transactions you made as a com
 
 
 
-![](images\1.png)
-![](images\2.png)
-![](images\3.png)
+![](https://github.com/Absera/Financial-Log-System/blob/main/images/image_2021-01-16_18-50-57.png?raw=true)
+
+
+![](https://github.com/Absera/Financial-Log-System/blob/main/images/image_2021-01-16_18-51-17.png?raw=true)
+
+
+![](https://github.com/Absera/Financial-Log-System/blob/main/images/image_2021-01-16_18-51-35.png?raw=true)
+
