@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Hamelmil Finance Log</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap/bootstrap.css') }} ">
+</head>
+
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(category_filter=["Error"]) %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+    </div>
+
+
+    <div class="container">
+        <div style="height: 200px;"></div>
+        <div class="row justify-content-center">
+            <form action="/" method="post" class="form-group">
+                <input class="form-control m-2" placeholder="Enter Password" type="password" name="password">
+                <button class="btn btn-danger m-2 btn-block" type="submit">Login</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/popper.min.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamelmil Finance Log</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap/bootstrap.css') }} ">
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hamelmil Financial Record System</a>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/add">Add New  </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search Database  </a>
+          </li>
+        </ul>
+    </nav>
+</div>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+             <div><h4>Sort By:</h4></div><br>
+        </div>
+        <div class="row justify-content-center">
+            <form action="/home" method="post">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" value="default">
+                  <label class="custom-control-label" for="customRadio5">Created (Last to First) (default)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio6" name="customRadio" class="custom-control-input" value="faf">
+                  <label class="custom-control-label" for="customRadio6">Created (First to Last)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio" name="customRadio" class="custom-control-input" value="dltf">
+                  <label class="custom-control-label" for="customRadio">Date (Last to First)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="dftl">
+                  <label class="custom-control-label" for="customRadio1">Date (First to Last)</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" value="phtl">
+                  <label class="custom-control-label" for="customRadio3">Price (High to Low)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" value="plth">
+                  <label class="custom-control-label" for="customRadio4">Price (Low to High)</label>
+                </div>
+
+                <button class="btn btn-danger btn-block m-3" type="submit">Apply</button>
+            </form>
+        </div>
+            {% for data, date in db_result|zip(dates) %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="jumbotron pb-2 pt-3">
+  <div class="container">
+    <h4 style="color:#007bff;">{{ data[1] }} @ {{ date }}</h4>
+    <p>- {{ data[4] }}</p>
+      <p style="color:#dc3545;"><i>Price - <b>{{ data[3] }} Birr</b></i></p>
+  </div>
+</div>
+
+            </div>
+            </div>
+
+
+        </div>
+            {% endfor %}
+    </div>
+
+<div class="row justify-content-center m-5">
+    <a href="#">Go To Top</a>
+</div>
+    <script src="{{ url_for('static', filename='semantic/semantic.js') }}"></script>
+</body>
+
+</html>

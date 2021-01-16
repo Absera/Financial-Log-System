@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Searching Area</title>
+    <!-- css -->
+    <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap/bootstrap.css') }} ">
+</head>
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hamelmil Financial Record System</a>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/add">Add New  </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search Database  </a>
+          </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center m-5"><div class="col-md-6">
+        <form action="/search" method="post">
+      <div class="input-group mb-2">
+        <input type="text" name="search-text" class="form-control" id="inlineFormInputGroup" placeholder="Search data">
+      <div class="input-group-append">
+          <button type="submit" class="btn btn-danger">Search</button>
+        </div>
+      </div>
+    </form>
+    </div>
+    </div>
+
+</div>
+
+<div class="container">
+    {% if search_results %}
+     {% for data, date in search_results|zip(dates) %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                     <div class="jumbotron pb-2 pt-3">
+  <div class="container">
+    <h4 style="color:#007bff;">{{ data[1] }} @ {{ date }}</h4>
+    <p>- {{ data[4] }}</p>
+      <p style="color:#dc3545;"><i>Price - <b>{{ data[3] }} Birr</b></i></p>
+  </div>
+</div>
+
+            </div>
+            </div>
+
+
+        </div>
+            {% endfor %}
+    {% endif %}
+</div>
+</body>
+</html>
